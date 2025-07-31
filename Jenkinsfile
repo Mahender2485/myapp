@@ -77,13 +77,13 @@ pipeline{
 
     post {
         success {
-            slackSend (channel: '#builds', color: 'good', message: "✅ Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}")
+            slackSend (channel: '#jenkin-pipeline', color: 'good', message: "✅ Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}")
         }
         failure {
-            slackSend (channel: '#builds', color: 'danger', message: "❌ Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}")
+            slackSend (channel: '#jenkin-pipeline', color: 'danger', message: "❌ Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}")
         }
         unstable {
-            slackSend (channel: '#builds', color: 'warning', message: "⚠️ Build UNSTABLE: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}")
+            slackSend (channel: '#jenkin-pipeline', color: 'warning', message: "⚠️ Build UNSTABLE: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}")
         }
     }
 }

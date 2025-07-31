@@ -14,9 +14,9 @@ pipeline{
     stages {
         stage('Checkout') {
             steps {
-                script {
+               /* script {
                     slackSend(color: '#439FE0', message: ":arrow_down: Starting *Checkout* stage for `${env.JOB_NAME}` #${env.BUILD_NUMBER}")
-                }
+                }*/
 
                 checkout scm
             }
@@ -24,10 +24,10 @@ pipeline{
 
         stage('Build') {
             steps {
-                script {
+               /* script {
                     slackSend(color: '#439FE0', message: ":hammer: Starting *Build* stage for `${env.JOB_NAME}` #${env.BUILD_NUMBER}")
 
-                }
+                } */
 
                 sh 'mvn clean package'
             }
@@ -35,9 +35,9 @@ pipeline{
 
          stage('Test') {
             steps {
-                script {
+               /*  script {
                     slackSend(color: '#439FE0', message: ":test_tube: Starting *Test* stage for `${env.JOB_NAME}` #${env.BUILD_NUMBER}")
-                }
+                } */
 
                 sh 'mvn test'
             }
@@ -45,9 +45,9 @@ pipeline{
 
         stage('SonarQube Analysis') {
             steps {
-                script {
+                /* script {
                     slackSend(color: '#439FE0', message: ":mag: Starting *SonarQube Analysis* for `${env.JOB_NAME}` #${env.BUILD_NUMBER}")
-                }
+                } */
 
                 withSonarQubeEnv('MySonarQubeServer') {
                     sh 'mvn sonar:sonar -Dsonar.projectKey=myapp'
@@ -57,9 +57,9 @@ pipeline{
 
         stage('Publish Artifact') {
             steps {
-                script {
+                /* script {
                     slackSend(color: '#439FE0', message: ":package: Starting *Artifact Publishing* stage for `${env.JOB_NAME}` #${env.BUILD_NUMBER}")
-                }
+                } */
                 // Optional: Publish to internal repo if configured
                 sh 'mvn deploy'
             }
@@ -68,9 +68,9 @@ pipeline{
         stage('Archive Artifact') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-                script {
+               /*  script {
                     slackSend(color: '#36a64f', message: ":file_folder: Archived artifact for `${env.JOB_NAME}` #${env.BUILD_NUMBER}`")
-                }
+                } */
             }
         }
     }

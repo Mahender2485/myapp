@@ -87,4 +87,3 @@ pipeline{
         }
     }
 }
-// This Jenkinsfile defines a pipeline for building a Java application using Maven.

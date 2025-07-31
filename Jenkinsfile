@@ -49,7 +49,7 @@ pipeline{
                     slackSend(color: '#439FE0', message: ":mag: Starting *SonarQube Analysis* for `${env.JOB_NAME}` #${env.BUILD_NUMBER}")
                 } */
 
-                withSonarQubeEnv('MySonarQubeServer') {
+                withSonarQubeEnv('myapp-sonar') {
                     sh 'mvn sonar:sonar -Dsonar.projectKey=myapp'
                 }
             }

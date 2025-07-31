@@ -2,8 +2,8 @@ pipeline{
     agent any
 
     tools {
-        maven 'Maven 3.8' // name must match Global Tool config
-        jdk 'JDK 17'      // name must match Global Tool config
+        maven 'myapp-maven' // name must match Global Tool config
+        jdk 'myapp-jdk'      // name must match Global Tool config
     }
 
     environment {
